@@ -1,0 +1,23 @@
+language: node_js
+
+node_js:
+    - "8.9.3"
+
+sudo: false
+
+git:
+    submodules: false
+
+cache:
+    directories:
+        - node_modules
+
+# before_script:
+#     # Prepare for automated tests
+#     - npm install
+before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
+
+script:
+    # Run tests
+    - npm run build
+    - npm test
